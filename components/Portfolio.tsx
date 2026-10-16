@@ -1,11 +1,12 @@
 'use client'
-import {motion,MotionConfig,useScroll,useTransform,useSpring,useMotionValueEvent,MotionValue} from 'framer-motion'
+import {motion,MotionConfig,useScroll,useTransform,useInView,useMotionValueEvent,useReducedMotion,MotionValue} from 'framer-motion'
 import {useRef,useState,ReactNode,CSSProperties} from 'react'
-import {NAME,IDENTITY,WORK,TECH,LOOK,GRAPHICS,DETAILS,CONTACT,ABOUT} from '@/data'
+import {NAME,IDENTITY,WORK,TECH,LOOK,FEATURES,MORE,MEDIA,DETAILS,CONTACT,ABOUT} from '@/data'
 
 const ph=(t:string)=><span className="ph">[{t}]</span>
 const pad=(n:number)=>String(n).padStart(2,'0')
 const vars=(o:Record<string,string|number>)=>o as CSSProperties
+const N=FEATURES.length
 function Reveal({children,d=0}:{children:ReactNode;d?:number}){return <motion.div initial={{opacity:0,y:24}} whileInView={{opacity:1,y:0}} viewport={{once:true,margin:'-10%'}} transition={{duration:.6,delay:d}}>{children}</motion.div>}
 
 function Hero(){
@@ -83,67 +84,24 @@ function Lookbook(){
   <div className="lbox">{LOOK.map((l,i)=><Fade key={l.k} p={p} i={i} n={n}><img src={`/img/${l.k}.webp`} width={1000} height={1000} alt={`${l.t}, front and back on a model`} loading={i?'lazy':'eager'} fetchPriority={i?'auto':'high'}/></Fade>)}</div></div></section>
 }
 
+function Media({s,alt}:{s:string;alt:string}){ // still thumbnail until near the viewport, then the animation
+ const ref=useRef<HTMLImageElement>(null);const rm=useReducedMotion();const on=useInView(ref,{margin:'300px'});const [w,h]=MEDIA[s]
+ return <img ref={ref} src={`/media/${s}${on&&!rm?'':'-still'}.webp`} width={w} height={h} alt={alt} decoding="async" loading="lazy"/>
+}
+function Feature({f,i}:{f:typeof FEATURES[number];i:number}){
+ const ref=useRef(null);const {scrollYProgress:p}=useScroll({target:ref,offset:['start end','end start']})
+ const ty=useTransform(p,[.05,.25],[60,0]),to=useTransform(p,[.05,.25],[0,1]),sc=useTransform(p,[.15,.45],[.86,1]),ao=useTransform(p,[.15,.4],[0,1])
+ const ay=useTransform(p,[0,1],[90,-90]),sy=useTransform(p,[0,1],[160,-160]),co=useTransform(p,[.42,.55],[0,1]);const [m,s]=f.items
+ return <section ref={ref} className={`feat ${i%2?'rev':''}`} style={vars({'--a':f.accent})}><div className="wrap">
+  <motion.h3 className="ft" style={{y:ty,opacity:to}}>{f.t}</motion.h3>
+  <div className="fa"><motion.div className="main" style={{scale:sc,opacity:ao,y:ay}}><Media s={m} alt={`${f.t} ${f.cat.toLowerCase()}`}/></motion.div>
+   {s&&<motion.div className="sub" style={{y:sy,opacity:ao}}><Media s={s} alt={`${f.t} icon`}/></motion.div>}</div>
+  <motion.p className="fc" style={{opacity:co}}><b>{pad(i+1)} / {pad(N)}</b> {f.cat}. {f.note}</motion.p></div></section>
+}
 function Designs(){
- const targetRef = useRef<HTMLDivElement>(null)
- const { scrollYProgress } = useScroll({ target: targetRef, offset: ['start start', 'end end'] })
- const smoothX = useSpring(scrollYProgress, { stiffness: 90, damping: 22, restDelta: 0.001 })
- const x = useTransform(smoothX, [0, 1], ['0%', '-78%'])
- const [idx, setIdx] = useState(0)
-
- useMotionValueEvent(scrollYProgress, 'change', v => {
-  setIdx(Math.min(GRAPHICS.length - 1, Math.max(0, Math.floor(v * GRAPHICS.length))))
- })
-
- return (
-  <section ref={targetRef} className="hscroll" id="designs">
-   <div className="hscroll-sticky">
-    <div className="hscroll-head">
-     <div>
-      <p className="subhead">VISUAL IDENTITY &amp; MEDIA</p>
-      <h2>Graphic Design</h2>
-      <p className="lead">Logos, banners, visual identities and animated brand assets.</p>
-     </div>
-     <div className="hscroll-hint">
-      <span className="pill">
-       <span className="dot" />
-       {pad(idx + 1)} / {pad(GRAPHICS.length)}
-      </span>
-      <div className="hscroll-bar">
-       <motion.div className="hscroll-bar-fill" style={{ scaleX: scrollYProgress }} />
-      </div>
-     </div>
-    </div>
-
-    <motion.div className="hscroll-track" style={{ x }}>
-     {GRAPHICS.map((g, i) => (
-      <motion.figure
-       key={g.k}
-       className="hscroll-card"
-       whileHover={{ y: -10, transition: { duration: 0.25 } }}
-       style={vars({ '--accent': g.accent || 'var(--gold)' })}
-      >
-       <div className="hscroll-imgbox">
-        <img
-         src={`/img/${g.k}.webp`}
-         width={g.w}
-         height={g.h}
-         alt={`${g.t} - ${g.s}`}
-         loading="lazy"
-        />
-       </div>
-       <figcaption className="hscroll-info">
-        <div className="hscroll-meta">
-         <b>{g.t}</b>
-         <span>{g.s}</span>
-        </div>
-        <span className="hscroll-idx">{pad(i + 1)}</span>
-       </figcaption>
-      </motion.figure>
-     ))}
-    </motion.div>
-   </div>
-  </section>
- )
+ return <section id="designs"><div className="wrap dhead"><Reveal><h2>Graphic design</h2><p className="lead">Logos, banners and animated brand sets.</p></Reveal></div>
+  {FEATURES.map((f,i)=><Feature key={f.id} f={f} i={i}/>)}
+  <div className="wrap more"><h3>More logos</h3><ul>{MORE.map(([k,w,h,t])=><li key={k}><img src={`/img/${k}.webp`} width={w} height={h} alt={`${t} logo`} loading="lazy"/></li>)}</ul></div></section>
 }
 
 function Word({p,a,b,children}:{p:MotionValue<number>;a:number;b:number;children:ReactNode}){const o=useTransform(p,[a,b],[.2,1]);return <motion.span style={{opacity:o}}>{children} </motion.span>}
@@ -166,4 +124,3 @@ export default function Portfolio(){
    <div id="work">{WORK.map((w,i)=><Project key={w.title} w={w} i={i}/>)}</div><Tech/><Impact/><Lookbook/><Designs/><About/><Contact/></main>
   <footer className="foot"><div className="wrap">&copy; 2026 {NAME}. {IDENTITY}.</div></footer></MotionConfig>
 }
-
