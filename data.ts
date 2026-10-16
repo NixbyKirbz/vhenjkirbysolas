@@ -15,14 +15,18 @@ export const WORK=[
 // Only technologies you listed. Add React etc. here once you confirm them. Logos: devicon (cdn.jsdelivr.net)
 export const TECH:[string,string,boolean?][]=[['Python','python'],['HTML5','html5'],['CSS3','css3'],['JavaScript','javascript'],['Git','git'],['GitHub','github',true]]
 export const LOOK=[{k:'look-yolo',t:'YOLO zip-up hoodie'},{k:'look-camo',t:'Camouflage zip-up hoodie'},{k:'look-burgundy',t:'Burgundy distressed hoodie'},{k:'look-offwhite',t:'Off-white graphic sweatshirt'}]
-export const FEATURES=[
- {id:'dudrs',t:'Dudrs Casino',cat:'Logo and banner',note:'An animated brand set.',accent:'#b3121f',items:['dudrs-banner','dudrs-logo']},
- {id:'zentra',t:'Zentra',cat:'Logo and banner',note:'An animated brand set.',accent:'#1d4ed8',items:['zentra-banner','zentra-logo']},
- {id:'coral',t:'Coral Traders',cat:'Logo and banner',note:'An animated brand set.',accent:'#0e8aa8',items:['coral-banner','coral-icon']},
- {id:'bloxy',t:'Bloxy Fruit',cat:'Logo and banner',note:'An animated brand set.',accent:'#4c8a1f',items:['bloxy-banner','bloxy-icon']},
- {id:'rivals',t:'Rivals Exploits',cat:'Logo and banner',note:'An animated brand set.',accent:'#4a4d5c',items:['rivals-banner','rivals-logo']},
- {id:'robuy',t:'RoBuy',cat:'Full brand set',note:'Logo, banner and profile art in black and gold.',accent:'#a87a00',items:['robuy']},
- {id:'db',t:'DB',cat:'Logo and banner',note:'An animated logo with a developer marketplace banner.',accent:'#1e3a8a',items:['db']},
- {id:'dess',t:'Dess Middleman Service',cat:'Banner',note:'An animated banner.',accent:'#a21caf',items:['dess-banner']},
- {id:'nxt',t:'NXT',cat:'Logo',note:'An animated logo.',accent:'#1f6feb',items:['nxt']}]
-export const MORE:[string,number,number,string][]=[['misea-shop',600,338,'Misea Shop'],['sss-studios',512,512,'SSS Studios'],['stocked',512,512,'Stocked']]
+export const GRAPHICS = [
+ { k: 'robuy', w: 854, h: 480, t: 'RoBuy', s: 'Full Brand Set & Identity', accent: '#d4af37' },
+ { k: 'zentra-banner', w: 500, h: 281, t: 'Zentra', s: 'Banner & Community Branding', accent: '#2563eb' },
+ { k: 'dudrs-casino', w: 384, h: 384, t: 'Dudrs Casino', s: 'Logo & Emblem Design', accent: '#ef4444' },
+ { k: 'db', w: 854, h: 480, t: 'DB Marketplace', s: 'Developer Platform Brand Set', accent: '#3b82f6' },
+ { k: 'bloxy-fruit-banner', w: 480, h: 270, t: 'Bloxy Fruit', s: 'Animated Gaming Banner', accent: '#22c55e' },
+ { k: 'bloxy-fruit-icon', w: 512, h: 512, t: 'Bloxy Fruit', s: 'Community Brand Icon', accent: '#16a34a' },
+ { k: 'dess-banner', w: 500, h: 281, t: 'Dess Middleman', s: 'Service Banner Design', accent: '#d946ef' },
+ { k: 'rituals-banner', w: 500, h: 281, t: 'Rivals Exploits', s: 'Cyberpunk Banner & Logo', accent: '#64748b' },
+ { k: 'misea-shop', w: 600, h: 338, t: 'Misea Shop', s: 'E-commerce Brand Identity', accent: '#f59e0b' },
+ { k: 'sss-studios', w: 512, h: 512, t: 'SSS Studios', s: 'Studio Monogram & Icon', accent: '#a855f7' },
+ { k: 'zentra-icon', w: 384, h: 384, t: 'Zentra Icon', s: 'Geometric Brand Symbol', accent: '#3b82f6' },
+ { k: 'stocked', w: 512, h: 512, t: 'Stocked', s: 'Typography & Brand Mark', accent: '#10b981' }
+]
+
