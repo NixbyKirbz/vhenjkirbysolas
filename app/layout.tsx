@@ -7,4 +7,4 @@ const body=Figtree({subsets:['latin'],variable:'--f-body'})
 export const metadata:Metadata={metadataBase:new URL(SITE),title:TITLE,description:DESC,authors:[{name:NAME}],
  openGraph:{title:TITLE,description:DESC,url:'/en',siteName:NAME,type:'website',images:['/og.png']},twitter:{card:'summary_large_image'},
  alternates:{canonical:'/en'},robots:{index:true,follow:true}}
-export default function L({children}:{children:React.ReactNode}){return <html lang="en" className={`${head.variable} ${body.variable}`}><body>{children}</body></html>}
+export default function L({children}:{children:React.ReactNode}){return <html lang="en" className={`${head.variable} ${body.variable}`}><body><noscript><style>{"[style*=\"opacity: 0\"],[style*=\"opacity:0\"]{opacity:1!important;transform:none!important;clip-path:none!important}"}</style></noscript>{children}</body></html>}
