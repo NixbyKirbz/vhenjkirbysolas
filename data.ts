@@ -4,8 +4,8 @@ export const MEDIA=media as Record<string,number[]>
 export const NAME='Vhenj Kirby Solas'
 export const SITE='https://www.vhenjkirbysolas.site'
 export const IDENTITY='Software Engineering Student, Web Developer & Graphic Designer'
-export const TITLE=`${NAME} | Software Engineer, Web Developer & Graphic Designer`
-export const DESC='Portfolio of Vhenj Kirby Solas, a Software Engineering student at Central Philippine University, web developer, and graphic designer based in the Philippines showcasing web apps and creative design.'
+export const TITLE=`${NAME} | Software Engineer & Web Developer`
+export const DESC='Portfolio of Vhenj Kirby Solas, Software Engineering student at Central Philippine University & web developer showcasing modern web apps and creative designs.'
 export const CONTACT={Email:'solasvhenjkirby@gmail.com',GitHub:'https://github.com/NixbyKirbz'}
 export const DETAILS:[string,string][]=[
  ['Education','Central Philippine University, Software Engineering'],
