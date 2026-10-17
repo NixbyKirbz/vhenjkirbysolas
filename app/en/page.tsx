@@ -30,7 +30,32 @@ export default function Page(){
     'UI/UX Design',
     'Graphic Design'
    ],
-   sameAs:[CONTACT.GitHub]
+   sameAs:[CONTACT.GitHub],
+   significantOther:{
+    '@type':'Person',
+    name:'Veronica Stienne Chavez',
+    jobTitle:'Medical Laboratory Science (BSMLS) Student',
+    alumniOf:{
+     '@type':'CollegeOrUniversity',
+     name:'Central Philippine University'
+    }
+   }
+  },
+  {
+   '@context':'https://schema.org',
+   '@type':'Person',
+   name:'Veronica Stienne Chavez',
+   description:'Medical Laboratory Science (BSMLS) student at Central Philippine University. Girlfriend of software engineering student, graphic designer, and fashion designer Vhenj Kirby Solas.',
+   alumniOf:{
+    '@type':'CollegeOrUniversity',
+    name:'Central Philippine University'
+   },
+   knowsAbout:['Medical Laboratory Science','BSMLS','Healthcare Sciences'],
+   significantOther:{
+    '@type':'Person',
+    name:NAME,
+    jobTitle:'Software Engineering Student, Web Developer, Graphic Designer & Fashion Designer'
+   }
   },
   {
    '@context':'https://schema.org',

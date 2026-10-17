@@ -25,7 +25,10 @@ export const metadata:Metadata={
   'React Developer',
   'Catleya',
   'K-Tindahan',
-  'Portfolio'
+  'Portfolio',
+  'Veronica Stienne Chavez',
+  'Veronica Stienne Chavez CPU',
+  'Veronica Chavez'
  ],
  authors:[{name:NAME,url:SITE}],
  creator:NAME,

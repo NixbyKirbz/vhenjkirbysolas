@@ -236,10 +236,11 @@ function Contact(){
 }
 
 /* ===== MAIN PORTFOLIO ===== */
-export default function Portfolio(){
+ export default function Portfolio(){
  const t='Engineering Ideas. Designing Experiences. '
  const [showSplash,setShowSplash]=useState(true)
  const [contentReady,setContentReady]=useState(false)
+ const [showEasterEgg,setShowEasterEgg]=useState(false)
 
  const handleSplashDone=()=>{setShowSplash(false)}
 
@@ -263,7 +264,68 @@ export default function Portfolio(){
    <header className="nav"><a href="#top">{NAME}</a><nav aria-label="Main"><a href="#work">Work</a><a href="#tech">Tech</a><a href="#apparel">Apparel</a><a href="#designs">Design</a><a href="#about">About</a><a href="#contact">Contact</a></nav></header>
    <main id="top"><Hero/><div className="marq" aria-hidden="true"><div>{t.repeat(8)}</div></div>
     <div id="work" className="proj-section">{WORK.map((w,i)=><Project key={w.title} w={w} i={i}/>)}</div><Tech/><Impact/><Lookbook/><Designs/><About/><Contact/></main>
-   <footer className="foot"><div className="wrap">&copy; 2026 {NAME}. {IDENTITY}.</div></footer>
+   <footer className="foot">
+    <div className="wrap foot-wrap">
+     <span>&copy; 2026 {NAME}. {IDENTITY}.</span>
+     <button
+      type="button"
+      className="easter-egg-btn"
+      onClick={()=>setShowEasterEgg(true)}
+      aria-label="A special dedication"
+      title="A special dedication"
+     >
+      <motion.span
+       animate={{scale:[1,1.25,1]}}
+       transition={{duration:2,repeat:Infinity,ease:'easeInOut'}}
+       className="heart-icon"
+      >
+       ♥
+      </motion.span>
+     </button>
+    </div>
+   </footer>
+   <aside className="sr-dedication" aria-label="Dedication">
+    <p>Special dedication to Veronica Stienne Chavez, Medical Laboratory Science (BSMLS) student at Central Philippine University. Girlfriend of software engineering student, graphic designer, and fashion designer Vhenj Kirby Solas.</p>
+   </aside>
   </motion.div>
+  <AnimatePresence>
+   {showEasterEgg && (
+    <motion.div
+     className="easter-egg-backdrop"
+     initial={{opacity:0}}
+     animate={{opacity:1}}
+     exit={{opacity:0}}
+     onClick={()=>setShowEasterEgg(false)}
+    >
+     <motion.div
+      className="easter-egg-card"
+      initial={{opacity:0,scale:0.9,y:20}}
+      animate={{opacity:1,scale:1,y:0}}
+      exit={{opacity:0,scale:0.9,y:20}}
+      transition={{type:'spring',damping:25,stiffness:300}}
+      onClick={e=>e.stopPropagation()}
+     >
+      <button
+       type="button"
+       className="easter-egg-close"
+       onClick={()=>setShowEasterEgg(false)}
+       aria-label="Close"
+      >
+       &times;
+      </button>
+      <div className="easter-egg-heart">&hearts;</div>
+      <p className="easter-egg-sub">A Special Dedication</p>
+      <h3 className="easter-egg-name">Veronica Stienne Chavez</h3>
+      <p className="easter-egg-field">Medical Laboratory Science (BSMLS) &bull; Central Philippine University</p>
+      <p className="easter-egg-text">
+       Girlfriend of software engineering student, graphic designer, and fashion designer Vhenj Kirby Solas.
+      </p>
+      <p className="easter-egg-note">
+       Always the greatest inspiration, warmth, and constant motivation behind every line of code and creative work.
+      </p>
+     </motion.div>
+    </motion.div>
+   )}
+  </AnimatePresence>
  </MotionConfig>
 }
