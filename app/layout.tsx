@@ -60,6 +60,9 @@ export const metadata:Metadata={
    'max-image-preview':'large',
    'max-snippet':-1
   }
+ },
+ other:{
+  'msvalidate.01':'B61783828AF928852453989F4B558ADD'
  }
 }
 export default function L({children}:{children:React.ReactNode}){return <html lang="en" className={`${head.variable} ${body.variable}`}><body><noscript><style>{"[style*=\"opacity: 0\"],[style*=\"opacity:0\"]{opacity:1!important;transform:none!important;clip-path:none!important}"}</style></noscript>{children}</body></html>}
