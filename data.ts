@@ -10,8 +10,8 @@ export const CONTACT={Email:'solasvhenjkirby@gmail.com',GitHub:'https://github.c
 export const DETAILS:[string,string][]=[['Education',''],['Skills',''],['Location',''],['Video editing','']]
 export const ABOUT="I'm Vhenj Kirby Solas, a Software Engineering student, aspiring full-stack developer, graphic designer, and video editor. I enjoy building web applications, designing user interfaces, creating visual identities, and turning ideas into functional digital experiences."
 export const WORK=[
- {title:'Catleya',text:'An educational productivity platform featuring notebooks, file organization, schedules, and planners.',k:'catleya-planner',w:1600,h:751,link:'https://catleya.vercel.app'},
- {title:'K-Tindahan',text:'A store management application concept focused on inventory, sales recording, reporting, and cashier management.',k:'ktindahan-dashboard',w:1600,h:764,link:'https://k-tindahan.vercel.app'}]
+ {title:'Catleya',text:'An educational productivity platform featuring notebooks, file organization, schedules, and planners.',k:'catleya-planner',k2:'catleya-login',w:1600,h:751,link:'https://catleya.vercel.app',accent:'#6d28d9',tags:['Next.js','TypeScript','Tailwind','Vercel']},
+ {title:'K-Tindahan',text:'A store management application concept focused on inventory, sales recording, reporting, and cashier management.',k:'ktindahan-dashboard',k2:'ktindahan-login',w:1600,h:764,link:'https://k-tindahan.vercel.app',accent:'#059669',tags:['React','JavaScript','CSS','Vercel']}]
 // Only technologies you listed. Add React etc. here once you confirm them. Logos: devicon (cdn.jsdelivr.net)
 export const TECH:[string,string,boolean?][]=[['Python','python'],['HTML5','html5'],['CSS3','css3'],['JavaScript','javascript'],['Git','git'],['GitHub','github',true]]
 export const LOOK=[{k:'look-yolo',t:'YOLO zip-up hoodie'},{k:'look-camo',t:'Camouflage zip-up hoodie'},{k:'look-burgundy',t:'Burgundy distressed hoodie'},{k:'look-offwhite',t:'Off-white graphic sweatshirt'}]
