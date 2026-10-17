@@ -320,9 +320,6 @@ function Contact(){
       <p className="easter-egg-text">
        Girlfriend of software engineering student, graphic designer, and fashion designer Vhenj Kirby Solas.
       </p>
-      <p className="easter-egg-note">
-       Always the greatest inspiration, warmth, and constant motivation behind every line of code and creative work.
-      </p>
      </motion.div>
     </motion.div>
    )}
