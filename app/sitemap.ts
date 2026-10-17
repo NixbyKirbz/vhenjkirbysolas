@@ -1,2 +1,19 @@
 import {SITE} from '@/data'
-export default function sitemap(){return [{url:`${SITE}/en`,lastModified:new Date('2026-10-16'),priority:1}]}
+import {MetadataRoute} from 'next'
+
+export default function sitemap(): MetadataRoute.Sitemap {
+ return [
+  {
+   url: `${SITE}/en`,
+   lastModified: new Date(),
+   changeFrequency: 'weekly',
+   priority: 1.0,
+  },
+  {
+   url: `${SITE}`,
+   lastModified: new Date(),
+   changeFrequency: 'weekly',
+   priority: 0.9,
+  }
+ ]
+}

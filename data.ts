@@ -3,11 +3,15 @@ import media from './content/media.json'
 export const MEDIA=media as Record<string,number[]>
 export const NAME='Vhenj Kirby Solas'
 export const SITE='https://vhenjkirbysolas.com'
-export const IDENTITY='Software Engineering Student, Web Developer, Graphic Designer & Video Editor'
-export const TITLE=`${NAME} | Developer, Graphic Designer & Video Editor`
-export const DESC='Explore the portfolio of Vhenj Kirby Solas, a Software Engineering student, web developer, fashion designer, graphic designer, and video editor showcasing software projects, digital products, and creative design work.'
+export const IDENTITY='Software Engineering Student, Web Developer & Graphic Designer'
+export const TITLE=`${NAME} | Software Engineer, Web Developer & Graphic Designer`
+export const DESC='Portfolio of Vhenj Kirby Solas, a Software Engineering student at Central Philippine University, web developer, and graphic designer based in the Philippines showcasing web apps and creative design.'
 export const CONTACT={Email:'solasvhenjkirby@gmail.com',GitHub:'https://github.com/NixbyKirbz'}
-export const DETAILS:[string,string][]=[['Education',''],['Skills',''],['Location',''],['Video editing','']]
+export const DETAILS:[string,string][]=[
+ ['Education','Central Philippine University, Software Engineering'],
+ ['Skills','Software Engineering, Full-Stack Web Development, UI/UX & Graphic Design'],
+ ['Location','Philippines']
+]
 export const ABOUT="I'm Vhenj Kirby Solas, a Software Engineering student, aspiring full-stack developer, graphic designer, and video editor. I enjoy building web applications, designing user interfaces, creating visual identities, and turning ideas into functional digital experiences."
 export const WORK=[
  {title:'Catleya',text:'An educational productivity platform featuring notebooks, file organization, schedules, and planners.',k:'catleya-planner',k2:'catleya-login',w:1600,h:751,link:'https://catleya.vercel.app',accent:'#6d28d9',tags:['Next.js','TypeScript','Tailwind','Vercel']},
