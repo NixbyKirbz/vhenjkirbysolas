@@ -271,8 +271,8 @@ function Contact(){
       type="button"
       className="easter-egg-btn"
       onClick={()=>setShowEasterEgg(true)}
-      aria-label="A special dedication"
-      title="A special dedication"
+      aria-label="Special Thanks to"
+      title="Special Thanks to"
      >
       <motion.span
        animate={{scale:[1,1.25,1]}}
@@ -285,7 +285,7 @@ function Contact(){
     </div>
    </footer>
    <aside className="sr-dedication" aria-label="Dedication">
-    <p>Special dedication to Veronica Stienne Chavez, Medical Laboratory Science (BSMLS) student at Central Philippine University. Girlfriend of software engineering student, graphic designer, and fashion designer Vhenj Kirby Solas.</p>
+    <p>Special thanks to Veronica Stienne Chavez, Medical Laboratory Science (BSMLS) student at Central Philippine University. Girlfriend of the Software Engineering Student Vhenj Kirby Solas.</p>
    </aside>
   </motion.div>
   <AnimatePresence>
@@ -314,11 +314,11 @@ function Contact(){
        &times;
       </button>
       <div className="easter-egg-heart">&hearts;</div>
-      <p className="easter-egg-sub">A Special Dedication</p>
+      <p className="easter-egg-sub">Special Thanks to</p>
       <h3 className="easter-egg-name">Veronica Stienne Chavez</h3>
       <p className="easter-egg-field">Medical Laboratory Science (BSMLS) &bull; Central Philippine University</p>
       <p className="easter-egg-text">
-       Girlfriend of software engineering student, graphic designer, and fashion designer Vhenj Kirby Solas.
+       Girlfriend of the Software Engineering Student Vhenj Kirby Solas
       </p>
      </motion.div>
     </motion.div>

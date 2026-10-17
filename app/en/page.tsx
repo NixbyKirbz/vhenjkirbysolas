@@ -45,7 +45,7 @@ export default function Page(){
    '@context':'https://schema.org',
    '@type':'Person',
    name:'Veronica Stienne Chavez',
-   description:'Medical Laboratory Science (BSMLS) student at Central Philippine University. Girlfriend of software engineering student, graphic designer, and fashion designer Vhenj Kirby Solas.',
+   description:'Medical Laboratory Science (BSMLS) student at Central Philippine University. Girlfriend of the Software Engineering Student Vhenj Kirby Solas.',
    alumniOf:{
     '@type':'CollegeOrUniversity',
     name:'Central Philippine University'
