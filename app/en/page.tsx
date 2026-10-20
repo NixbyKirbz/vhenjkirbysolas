@@ -1,12 +1,13 @@
 import Portfolio from '@/components/Portfolio'
 import {NAME,SITE,DESC,CONTACT,IDENTITY} from '@/data'
+
 export default function Page(){
  const ld=[
   {
    '@context':'https://schema.org',
    '@type':'Person',
    name:NAME,
-   url:SITE,
+   url:`${SITE}/en`,
    email:CONTACT.Email,
    jobTitle:IDENTITY,
    description:DESC,
@@ -61,7 +62,7 @@ export default function Page(){
    '@context':'https://schema.org',
    '@type':'WebSite',
    name:`${NAME} Portfolio`,
-   url:SITE,
+   url:`${SITE}/en`,
    description:DESC,
    inLanguage:'en'
   },
