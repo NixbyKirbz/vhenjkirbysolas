@@ -109,4 +109,9 @@ dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1re
  .look{height:calc(var(--n)*60vh)}
  .lcap{top:4.5rem;bottom:auto;left:1rem}.lbox{height:min(70vh,92vw);margin-top:4rem}.fa .main{width:100%}.fa .sub{width:46%;bottom:-10%}.feat{min-height:110vh}
 }
-@media(prefers-reduced-motion:reduce){.marq div{animation:none}html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:reduce){
+ .splash{display:none!important}
+ .marq div{animation:none}
+ html{scroll-behavior:auto}
+ [style*="opacity: 0"],[style*="opacity:0"]{opacity:1!important;transform:none!important;clip-path:none!important}
+}

@@ -11,19 +11,44 @@ function Reveal({children,d=0}:{children:ReactNode;d?:number}){return <motion.di
 
 /* ===== SPLASH INTRO ===== */
 function Splash({onDone}:{onDone:()=>void}){
- useEffect(()=>{const t=setTimeout(onDone,2500);return ()=>clearTimeout(t)},[onDone])
+ useEffect(()=>{
+  // Skip splash immediately for search engine crawlers and bots
+  if(typeof navigator !== 'undefined' && /bot|crawler|spider|crawling|google|bing|yandex|baidu|duckduck|lighthouse|headless/i.test(navigator.userAgent)){
+   onDone()
+   return
+  }
+  // Skip if user prefers reduced motion
+  if(typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+   onDone()
+   return
+  }
+  // Skip if already seen in this session
+  try{
+   if(sessionStorage.getItem('vks_splash_seen')){
+    onDone()
+    return
+   }
+  }catch(_){}
+
+  const t=setTimeout(()=>{
+   onDone()
+   try{sessionStorage.setItem('vks_splash_seen','1')}catch(_){}
+  },1200)
+  return ()=>clearTimeout(t)
+ },[onDone])
+
  return(
   <motion.div
    className="splash"
    initial={{opacity:1}}
-   exit={{opacity:0,scale:1.1}}
-   transition={{duration:.5,ease:'easeInOut'}}
+   exit={{opacity:0,scale:1.05}}
+   transition={{duration:.4,ease:'easeInOut'}}
   >
    <motion.span
     className="splash-initials"
     initial={{scale:0.6,opacity:0,filter:'blur(12px)'}}
     animate={{scale:1,opacity:1,filter:'blur(0px)'}}
-    transition={{duration:1,ease:[.22,1,.36,1]}}
+    transition={{duration:.8,ease:[.22,1,.36,1]}}
    >
     VKS
    </motion.span>
@@ -41,7 +66,6 @@ const ORBS=[
 
 function Hero(){
  const descText="I'm a Software Engineering student, web developer, graphic designer, and video editor passionate about building useful digital products and creating meaningful visual experiences. I combine code and creativity to bring ideas to life."
- const descWords=descText.split(' ')
 
  return <section className="hero"><div className="wrap"><div className="hero-content">
   {/* Floating orbs */}
@@ -108,13 +132,13 @@ function Hero(){
    />
   </motion.p>
 
-  {/* Staggered word reveal */}
-  <motion.p className="lead" initial="hidden" animate="visible" variants={{hidden:{},visible:{transition:{staggerChildren:.03,delayChildren:1.05}}}}>
-   {descWords.map((word,i)=>(
-    <motion.span key={i} className="hero-word" variants={{hidden:{opacity:0,y:12},visible:{opacity:1,y:0,transition:{duration:.4}}}}>
-     {word}
-    </motion.span>
-   ))}
+  <motion.p
+   className="lead"
+   initial={{opacity:0,y:14}}
+   animate={{opacity:1,y:0}}
+   transition={{delay:.4,duration:.5}}
+  >
+   {descText}
   </motion.p>
 
   <motion.div className="btns" initial={{opacity:0,y:12}} animate={{opacity:1,y:0}} transition={{delay:1.25,duration:.5}}><a className="btn gold" href="#work">See the projects</a><a className="btn" href="#designs">See the designs</a></motion.div></div></div></section>
@@ -236,31 +260,18 @@ function Contact(){
 }
 
 /* ===== MAIN PORTFOLIO ===== */
- export default function Portfolio(){
+export default function Portfolio(){
  const t='Engineering Ideas. Designing Experiences. '
  const [showSplash,setShowSplash]=useState(true)
- const [contentReady,setContentReady]=useState(false)
  const [showEasterEgg,setShowEasterEgg]=useState(false)
 
  const handleSplashDone=()=>{setShowSplash(false)}
-
- useEffect(()=>{
-  if(!showSplash){
-   // Small delay so exit animation plays before content fades in
-   const t=setTimeout(()=>setContentReady(true),500)
-   return ()=>clearTimeout(t)
-  }
- },[showSplash])
 
  return <MotionConfig reducedMotion="user">
   <AnimatePresence>
    {showSplash && <Splash key="splash" onDone={handleSplashDone}/>}
   </AnimatePresence>
-  <motion.div
-   initial={{opacity:0}}
-   animate={{opacity:contentReady?1:0}}
-   transition={{duration:.6}}
-  >
+  <div className="portfolio-wrap">
    <header className="nav"><a href="#top">{NAME}</a><nav aria-label="Main"><a href="#work">Work</a><a href="#tech">Tech</a><a href="#apparel">Apparel</a><a href="#designs">Design</a><a href="#about">About</a><a href="#contact">Contact</a></nav></header>
    <main id="top"><Hero/><div className="marq" aria-hidden="true"><div>{t.repeat(8)}</div></div>
     <div id="work" className="proj-section">{WORK.map((w,i)=><Project key={w.title} w={w} i={i}/>)}</div><Tech/><Impact/><Lookbook/><Designs/><About/><Contact/></main>
@@ -287,7 +298,7 @@ function Contact(){
    <aside className="sr-dedication" aria-label="Dedication">
     <p>Special thanks to Veronica Stienne Chavez, Medical Laboratory Science (BSMLS) student at Central Philippine University. Girlfriend of the Software Engineering Student Vhenj Kirby Solas.</p>
    </aside>
-  </motion.div>
+  </div>
   <AnimatePresence>
    {showEasterEgg && (
     <motion.div
